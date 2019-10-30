@@ -107,7 +107,7 @@ func resourceNewRelicDashboard() *schema.Resource {
 							Optional: true,
 						},
 						// TODO: Move this to a set/map?
-						"nrql": {
+						"data": {
 							Type:     schema.TypeString,
 							Optional: true,
 						},
@@ -126,13 +126,13 @@ func resourceNewRelicDashboardWidgetsHash(v interface{}) int {
 	column := m["column"].(int)
 	width := m["width"].(int)
 	height := m["height"].(int)
-	nrql := m["nrql"].(string)
+	nrql := m["data"].(string)
 	title := m["title"].(string)
 	notes := m["notes"].(string)
 	viz := m["visualization"].(string)
 
 	buf.WriteString(fmt.Sprintf("%d-%d-%d-%d-%s-%s-%s-%s",
-		row, column, width, height, nrql, title, viz, notes))
+		row, column, width, height, data, title, viz, notes))
 
 	return hashcode.String(buf.String())
 }
@@ -201,7 +201,7 @@ func expandDashboard(d *schema.ResourceData) *newrelic.Dashboard {
 			// TODO: Support non-NRQL Widgets
 			widgetData := []newrelic.DashboardWidgetData{
 				{
-					NRQL: w["nrql"].(string),
+					w["data"].(string),
 				},
 			}
 
