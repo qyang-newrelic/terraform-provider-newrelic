@@ -1,4 +1,4 @@
-module github.com/terraform-providers/terraform-provider-newrelic
+module qy-terraform-provider-newrelic
 
 require (
 	github.com/dollarshaveclub/new-relic-synthetics-go v0.0.0-20170605224734-4dc3dd6ae884

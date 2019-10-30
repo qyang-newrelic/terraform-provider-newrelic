@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/terraform-providers/terraform-provider-newrelic/newrelic"
+	"github.com/qyang-newrelic/terraform-provider-newrelic"
 )
 
 func main() {
